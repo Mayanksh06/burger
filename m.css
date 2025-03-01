@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: linear-gradient(135deg, rgb(250, 162, 231) 40%, rgb(235, 245, 105) 75%, cyan 80%);
+  background-size: cover;
+  background-attachment: fixed;
+  display: grid;
+}
+
+.header{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.header h1{
+  margin: 10px;
+  text-align: left;
+  box-shadow: 0px 4px 10px black;
+  transition: box-shadow 2.5s ease-in;
+}
+
+.glow-image {
+  border-radius: 60px;
+  box-shadow: 0px 4px 10px red;
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-image:hover {
+  animation: glow-animation 1.5s infinite alternate ease-in-out;
+}
+
+.glow-effect{
+  background: linear-gradient(90deg,red,black);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+
+@keyframes glow-animation {
+  0% {
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff6600, 0 0 50px #ff6600;
+  }
+  50% {
+    box-shadow: 0 0 10px #ff6600, 0 0 20px #ff6600, 0 0 30px #ffff00, 0 0 40px #ffff00, 0 0 50px #ffcc00;
+  }
+  100% {
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ffff, 0 0 40px #00ccff, 0 0 50px #0000ff;
+  }
+}
+
+.left{
+  margin: 10px 20px 10px;
+  border-radius: 6px;
+
+}
+
+.social {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  text-decoration: none;
+  font-size: 30px;
+  display: inline-block;
+  padding: 15px;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.6), 0px 0px 40px rgba(6, 57, 57, 0.6);
+  color: #00ffff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+nav{
+  background: black;
+  padding: 1rem;
+}
+
+nav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li{
+  display: inline;
+}
+
+nav ul li a{
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+
+nav ul li a:hover{
+  background-color: #575757;
+  border-radius: 5px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  position: relative;
+  width: 200px;
+  height: 270px;
+  background-color: #000;
+  background-image: url("https://images.unsplash.com/photo-1538998073820-4dfa76300194?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zmxvd2VyfGVufDB8fDB8fHww");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 12px;
+  gap: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -5px;
+  margin: auto;
+  width: 210px;
+  height: 280px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #0a8fc9 0%, #195c2b 100%);
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #ea058a 0%, #06f0b9 100%);
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
+}
+
+.card:hover::after {
+  filter: blur(30px);
+}
+
+.card:hover::before {
+  transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
+}
+
+.heading {
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+p {
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.footer{
+  text-align:center;
+  padding: 30px;
+  background-color: #000;
+}
+
+.social{
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.wrappeer{
+  flex: 1;
+  display: flex;
+}
